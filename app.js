@@ -1,5 +1,6 @@
 // 載入套件
 const express= require('express')
+const exphbs = require('express-handlebars')
 
 // 引入路由器
 const routes = require('./routes')
@@ -13,7 +14,10 @@ const PORT = 3000
 // 將 request 導入路由器
 app.use(routes)
 
-
+// 設定樣板引擎
+app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
+app.set('views', './views')
 
 
 // 啟動 Server

@@ -38,5 +38,5 @@ const restaurantSchema = new Schema({
   }
 })
 
-// export schema and named it 'Todo'
+// export schema and named it 'ReataurantList'
 module.exports = mongoose.model('ReataurantList', restaurantSchema)
