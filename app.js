@@ -1,6 +1,7 @@
 // 載入套件
 const express= require('express')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 
 // 引入路由器
 const routes = require('./routes')
@@ -18,6 +19,9 @@ app.use(routes)
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.set('views', './views')
+
+// 設定 bodyParser
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
 // 啟動 Server
