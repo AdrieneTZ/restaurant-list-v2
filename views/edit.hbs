@@ -1,14 +1,15 @@
 <div class='container'>
-  <form action='/restaurants' method='POST'>
+  <form action='/restaurants/{{list._id}}?_method=PUT' method='POST'>
     {{! name }}
     <div class='form-group mt-3'>
-      <label for='name'>餐廳名稱 ( 必填 )</label>
+      <label for='name'>餐廳名稱 ( 必填 )}</label>
       <input
         type='text'
         class='form-control'
         name='name'
         id='name'
         placeholder='請輸入餐廳的中文名稱'
+        value='{{list.name}}'
       />
     </div>
     {{! name_en }}
@@ -20,6 +21,7 @@
         name='name_en'
         id='name_en'
         placeholder='Please text the restaurant name here'
+        value='{{list.name_en}}'
       />
     </div>
 
@@ -33,6 +35,7 @@
         name='category'
         id='category'
         placeholder='請輸入餐點類型 What is the cuisine type of this restaurant?'
+        value='{{list.category}}'
       />
       <datalist id='categories'>
         <option>美式 American</option>
@@ -54,6 +57,7 @@
         name='image'
         id='image'
         placeholder='圖片連結 Please put the image link here'
+        value='{{list.image}}'
       />
     </div>
 
@@ -66,6 +70,7 @@
         name='phone'
         id='phone'
         placeholder='請輸入電話號碼 Please text the restaurant phone number here'
+        value='{{list.phone}}'
       />
     </div>
 
@@ -78,6 +83,7 @@
         name='location'
         id='location'
         placeholder='請輸入餐廳地址 Please text the restaurant address here'
+        value='{{list.location}}'
       />
     </div>
 
@@ -90,6 +96,7 @@
         name='google_map'
         id='google_map'
         placeholder='請貼上 Google Map 連結 Please put the Google Map link here'
+        value='{{list.google_map}}'
       />
     </div>
 
@@ -105,6 +112,7 @@
         min='0'
         max='5'
         step='1'
+        value='{{list.rating}}'
       />
     </div>
 
@@ -117,12 +125,13 @@
         id='description'
         name='description'
         placeholder='好吃!!!! Yummy'
+        value='{{list.description}}'
       />
     </div>
     <button
       id='submit-btn'
       type='submit'
       class='btn btn-primary mt-3'
-    >Create</button>
+    >Save</button>
   </form>
 </div>
