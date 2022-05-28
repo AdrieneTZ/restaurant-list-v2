@@ -15,21 +15,6 @@ router.post('/', (req, res) => {
   .catch(error => console.log(error))
 })
 
-
-// route to search result page
-router.get('/', (req, res) => {
-  const keyword = req.query.keyword
-  keyword.trim() === 'true' ? keyword = req.query.keyword : res.redirect('/')
-  const regexKeyword = new RegExp(keyword, 'i')
-
-
-
-  return ReataurantList.find({ $or: [{ name: regexKeyword }, { name_en: regexKeyword }, { category: regexKeyword }] })
-    .lean()
-    .then(searchResult => res.render('search', { searchResult, keyword }))
-    .catch(error => console.log(error))
-})
-
 // route to detail page
 router.get('/:id', (req, res) => {
   const id = req.params.id
@@ -38,9 +23,5 @@ router.get('/:id', (req, res) => {
   .then(list => res.render('detail', { list }))
   .catch(error => console.log(error))
 })
-
-
-
-
 
 module.exports = router
