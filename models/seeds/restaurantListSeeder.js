@@ -1,11 +1,11 @@
-const ReataurantList = require('../restaurantList')
+const RestaurantList = require('../restaurantList')
 const seedsData = require('./restaurantData.json')
 
 const db = require('../../config/mongoose')
 
 db.once('open', () => {
   seedsData.results.forEach(seed => {
-    ReataurantList.create({
+    RestaurantList.create({
       name: `${seed.name}`,
       name_en: `${seed.name_en}`,
       category: `${seed.category}`,

@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 // 載入 restaurant model
-const ReataurantList = require('../../models/restaurantList')
+const RestaurantList = require('../../models/restaurantList')
 
 router.get('/', (req, res) => {
   ReataurantList.find()

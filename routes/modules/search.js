@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const ReataurantList = require('../../models/restaurantList')
+const RestaurantList = require('../../models/restaurantList')
 
 // route to search result page
 router.get('/', (req, res) => {
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
   if (!keyword.trim()) {res.redirect('/')}
 
-  return ReataurantList.find({ $or: [{ name: regexKeyword }, { name_en: regexKeyword }, { category: regexKeyword }] })
+  return RestaurantList.find({ $or: [{ name: regexKeyword }, { name_en: regexKeyword }, { category: regexKeyword }] })
     .lean()
     .then(searchResult => res.render('search', { searchResult, keyword }))
     .catch(error => console.log(error))

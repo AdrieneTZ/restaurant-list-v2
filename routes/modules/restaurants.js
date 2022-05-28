@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const ReataurantList = require('../../models/restaurantList')
+const RestaurantList = require('../../models/restaurantList')
 
 // route to create list page
 router.get('/new', (req, res) => {
@@ -10,7 +10,7 @@ router.get('/new', (req, res) => {
 
 // route to get the list from create list page
 router.post('/', (req, res) => {
-  return ReataurantList.create(req.body)
+  return RestaurantList.create(req.body)
   .then(() => res.redirect('/'))
   .catch(error => console.log(error))
 })
@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 // route to detail page
 router.get('/:id', (req, res) => {
   const id = req.params.id
-  return ReataurantList.findById(id)
+  return RestaurantList.findById(id)
   .lean()
   .then(list => res.render('detail', { list }))
   .catch(error => console.log(error))
@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
 
-  return ReataurantList.findById(id)
+  return RestaurantList.findById(id)
   .lean()
   .then(list => res.render('edit', { list }))
   .catch(error => console.log(error))
@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
   const id = req.params.id
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
 
-  return ReataurantList.findByIdAndUpdate(id, req.body, { new: true })
+  return RestaurantList.findByIdAndUpdate(id, req.body, { new: true })
     .then(updateList => { return updateList.save() })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
