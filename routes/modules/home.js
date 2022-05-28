@@ -6,7 +6,7 @@ const router = express.Router()
 const RestaurantList = require('../../models/restaurantList')
 
 router.get('/', (req, res) => {
-  ReataurantList.find()
+  RestaurantList.find()
     .lean()
     .sort({ _id: 'asc' })
     .then(lists => res.render('index', { lists }))

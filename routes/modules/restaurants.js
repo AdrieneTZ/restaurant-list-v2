@@ -45,4 +45,13 @@ router.put('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// route to delete a list
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+
+  return RestaurantList.findByIdAndRemove(id)
+  .then(() => res.redirect('/'))
+  .catch(error => console.log(error))
+})
+
 module.exports = router
