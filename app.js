@@ -17,6 +17,9 @@ app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.set('views', './views')
 
+// 使用靜態資料
+app.use(express.static('public'))
+
 // 設定 bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
 
