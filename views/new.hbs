@@ -1,0 +1,128 @@
+<div class='container'>
+  <form action='/restaurants' method='POST'>
+    {{! name }}
+    <div class='form-group mt-3'>
+      <label for='name'>餐廳名稱 ( 必填 )</label>
+      <input
+        type='text'
+        class='form-control'
+        name='name'
+        id='name'
+        placeholder='請輸入餐廳的中文名稱'
+      />
+    </div>
+    {{! name_en }}
+    <div class='form-group mt-3'>
+      <label for='name_en'>Restaurant Name ( required )</label>
+      <input
+        type='text'
+        class='form-control'
+        name='name_en'
+        id='name_en'
+        placeholder='Please text the restaurant name here'
+      />
+    </div>
+
+    {{! category }}
+    <div class='form-group mt-3'>
+      <label for='category'>類型( 必填 ) Cuisine Type( required )</label>
+      <input
+        list='categories'
+        type='text'
+        class='form-control'
+        name='category'
+        id='category'
+        placeholder='請輸入餐點類型 What is the cuisine type of this restaurant?'
+      />
+      <datalist id='categories'>
+        <option>美式 American</option>
+        <option>日本料理 Japanese</option>
+        <option>義式餐廳 Italian</option>
+        <option>韓式料理 Korean</option>
+        <option>中東料理 Middle Eastern</option>
+        <option>咖啡 Café</option>
+        <option>酒吧 Bar</option>
+      </datalist>
+    </div>
+
+    {{! image }}
+    <div class='form-group mt-3'>
+      <label for='image'>餐廳圖片 Image Link</label>
+      <input
+        type='text'
+        class='form-control'
+        name='image'
+        id='image'
+        placeholder='圖片連結 Please put the image link here'
+      />
+    </div>
+
+    {{! phone }}
+    <div class='form-group mt-3'>
+      <label for='phone'>電話( 必填 ) Phone Number( required )</label>
+      <input
+        type='text'
+        class='form-control'
+        name='phone'
+        id='phone'
+        placeholder='請輸入電話號碼 Please text the restaurant phone number here'
+      />
+    </div>
+
+    {{! location }}
+    <div class='form-group mt-3'>
+      <label for='loaction'>地址( 必填 ) Address( required )</label>
+      <input
+        type='text'
+        class='form-control'
+        name='location'
+        id='location'
+        placeholder='請輸入餐廳地址 Please text the restaurant address here'
+      />
+    </div>
+
+    {{! google_map }}
+    <div class='form-group mt-3'>
+      <label for='google_map'>連結 Google Map Link</label>
+      <input
+        type='text'
+        class='form-control'
+        name='google_map'
+        id='google_map'
+        placeholder='請貼上 Google Map 連結 Please put the Google Map link here'
+      />
+    </div>
+
+    {{! rating }}
+    <div class='form-group mt-3'>
+      <label for='rating'>評分 Rate for the restaurant</label>
+      <input
+        type='Number'
+        class='form-control'
+        name='rating'
+        id='rating'
+        placeholder='請為這間餐廳評分 How much do you like this restaurant?'
+        min='0'
+        max='5'
+        step='1'
+      />
+    </div>
+
+    {{! description }}
+    <div class='form-group mt-3'>
+      <label for='description'>請描述這間餐廳( 必填 ) Write some description for
+        the restaurant( required )</label>
+      <textarea
+        class='form-control'
+        id='description'
+        name='description'
+        placeholder='好吃!!!! Yummy'
+      ></textarea>
+    </div>
+    <button
+      id='submit-btn'
+      type='submit'
+      class='btn btn-primary mt-3'
+    >Create</button>
+  </form>
+</div>

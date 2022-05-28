@@ -12,9 +12,6 @@ require('./config/mongoose')
 const app = express()
 const PORT = 3000
 
-// 將 request 導入路由器
-app.use(routes)
-
 // 設定樣板引擎
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
@@ -23,6 +20,8 @@ app.set('views', './views')
 // 設定 bodyParser
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// 將 request 導入路由器
+app.use(routes)
 
 // 啟動 Server
 app.listen(PORT, () => {
