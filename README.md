@@ -1,5 +1,7 @@
 ## Restaurant List
 
+![restaurant-demo.JPG](https://drive.google.com/uc?id=18tpgVmIr9y-Cl9EgXSYIUL_yPtYTf6lA)
+
 ### Feature
 - Search by keyword with name in either English or Traditional Chinese of the reataurant or cuisine type its served
 - Click 'Create a favorit list' to add a new restaurant into your lists
