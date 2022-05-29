@@ -10,6 +10,7 @@
 - Click 'Delete' to remove the restaurant in your lists
 - In detail description page, click the emoji after the address to link to google map
 - Click 'My Restaurant List' to go back to the home page
+- Sort restaurant list by character from A to Z or Z to A, or by rating from the highest to the lowest
 
 ### Prerequisite
 - Node.js v18.0.0
