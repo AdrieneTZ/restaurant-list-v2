@@ -10,7 +10,4 @@ router.use('/restaurants', restaurants)
 const search = require('./modules/search')
 router.use('/search', search)
 
-const sort = require('./modules/sort')
-router.use('/sort', sort)
-
 module.exports = router
