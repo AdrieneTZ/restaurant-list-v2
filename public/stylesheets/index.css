@@ -2,12 +2,16 @@ header {
   overflow: hidden;
 }
 
+.navbar {
+  background: #12295b;
+}
+
 .navbar .navbar-brand {
-  color: #4592af;
+  color: #eef8ed;
 }
 
 .navbar .navbar-brand:hover {
-  color: #226089;
+  color: #ffb627;
 }
 
 .banner {
@@ -15,7 +19,7 @@ header {
   z-index: -1;
   margin: -5px;
   height: 360px;
-  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
+  background: #dddddd center center url('https://images.unsplash.com/photo-1484156818044-c040038b0719?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80');
   background-size: cover;
   filter: blur(3px);
 }
@@ -23,7 +27,7 @@ header {
 .search-bar .search-bar-outer {
   margin: 0 auto;
   max-width: 680px;
-  background-color: #fce2cf;
+  background-color: #12295b;
   border-radius: 8px;
   padding: 20px 30px;
   border: 0;
@@ -32,7 +36,7 @@ header {
 }
 
 .search-bar .search-bar-inner h4 {
-  color: #9b4b4b;
+  color: #eef8ed;
 }
 
 .form-control::placeholder {
@@ -41,13 +45,28 @@ header {
 }
 
 .btn-major {
-  background-color: #9b4b4b;
+  background-color: #ffb627;
   color: white;
+}
+
+.btn-major:hover {
+  background-color: #cae9ff;
+  color: #12295b;
 }
 
 .form-control:focus {
   box-shadow: none;
   border-color: #ced4da;
+}
+
+.container .btn-outline-light {
+  background-color: #ffb627;
+  color: #eef8ed;
+}
+
+.container .btn-outline-light:hover {
+  background-color: #cae9ff;
+  color: #12295b;
 }
 
 .card {

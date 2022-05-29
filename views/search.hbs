@@ -33,31 +33,52 @@
       <div class='row'>
         {{#each searchResult}}
           <div class='card col-4'>
-            <a href='/restaurants/{{this._id}}' class='text-secondary'>
-              <div class='card mb-3'>
-                <img
-                  class='card-img-top'
-                  src='{{this.image}}'
-                  alt='{{this.name}}'
-                />
-                <div class='card-body p-3'>
-                  <h6 class='card-title mb-1'>{{this.name}}</h6>
 
-                  <div class='restaurant-category mb-1'>
-                    <i class='fas fa-utensils pr-2'></i>
-                    {{this.category}}
-                  </div>
+            <div class='card mb-3'>
+              <img
+                class='card-img-top'
+                src='{{this.image}}'
+                alt='{{this.name}}'
+              />
+              <div class='card-body p-3'>
+                <h6 class='card-title mb-1'>{{this.name}}</h6>
 
-                  <span
-                    class='badge badge-pill badge-danger font-weight-normal'
-                  >
-                    {{this.rating}}
-                    <i class='fas fa-star fa-xs'></i>
-                  </span>
-
+                <div class='restaurant-category mb-1'>
+                  <i class='fas fa-utensils pr-2'></i>
+                  {{this.category}}
                 </div>
+
+                <span class='badge badge-pill badge-danger font-weight-normal'>
+                  {{this.rating}}
+                  <i class='fas fa-star fa-xs'></i>
+                </span>
+
               </div>
-            </a>
+            </div>
+            <div class='buttons d-flex align-self-center align-items-baseline'>
+              <a
+                class='btn mx-1'
+                style='background-color: #304c89; color: #eef8ed;'
+                href='/restaurants/{{this._id}}'
+              >More</a>
+              <a
+                class='btn mx-1'
+                style='background-color: #12295b; color: #eef8ed;'
+                href='./restaurants/{{this._id}}/edit'
+              >Edit</a>
+              <form
+                action='./restaurants/{{this._id}}?_method=DELETE'
+                method='POST'
+                class='d-inline align-self-center'
+              >
+                <button
+                  class='btn mx-1'
+                  style='background-color: #710117; color: #eef8ed;'
+                  type='submit'
+                >Delete</button>
+              </form>
+            </div>
+
           </div>
         {{/each}}
 

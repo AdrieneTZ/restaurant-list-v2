@@ -56,25 +56,25 @@
 
               </div>
             </div>
-            <div class='buttons col-auto'>
+            <div class='buttons d-flex align-self-center align-items-baseline'>
               <a
-                class='btn'
-                style='background-color: #8ea47d; color: #eef8ed;'
+                class='btn mx-1'
+                style='background-color: #304c89; color: #eef8ed;'
                 href='/restaurants/{{this._id}}'
               >More</a>
               <a
-                class='btn'
-                style='background-color: #5b7148; color: #eef8ed;'
+                class='btn mx-1'
+                style='background-color: #12295b; color: #eef8ed;'
                 href='./restaurants/{{this._id}}/edit'
               >Edit</a>
               <form
                 action='./restaurants/{{this._id}}?_method=DELETE'
                 method='POST'
-                style='display: inline;'
+                class='d-inline align-self-center'
               >
                 <button
-                  class='btn'
-                  style='background-color: #f2c367; color: #5b7148;'
+                  class='btn mx-1'
+                  style='background-color: #710117; color: #eef8ed;'
                   type='submit'
                 >Delete</button>
               </form>
