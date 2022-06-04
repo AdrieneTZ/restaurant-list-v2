@@ -1,8 +1,9 @@
 <div class='container'>
-  <form action='/restaurants/{{list._id}}?_method=PUT' method='POST'>
+  <form action='/restaurants/{{list._id}}?_method=PUT' method='POST' class='needs-validation' novalidate>
+
     {{! name }}
     <div class='form-group mt-3'>
-      <label for='name'>餐廳名稱 ( 必填 )}</label>
+      <label for='name'>餐廳名稱( 必填 )</label>
       <input
         type='text'
         class='form-control'
@@ -10,8 +11,13 @@
         id='name'
         placeholder='請輸入餐廳的中文名稱'
         value='{{list.name}}'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid name.
+      </div>
     </div>
+
     {{! name_en }}
     <div class='form-group mt-3'>
       <label for='name_en'>Restaurant Name ( required )</label>
@@ -22,21 +28,30 @@
         id='name_en'
         placeholder='Please text the restaurant name here'
         value='{{list.name_en}}'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid name.
+      </div>
     </div>
 
     {{! category }}
     <div class='form-group mt-3'>
       <label for='category'>類型( 必填 ) Cuisine Type( required )</label>
       <input
-        list='categories'
         type='text'
         class='form-control'
         name='category'
         id='category'
         placeholder='請輸入餐點類型 What is the cuisine type of this restaurant?'
         value='{{list.category}}'
+        list='categories'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid category.
+      </div>
+
       <datalist id='categories'>
         <option>美式 American</option>
         <option>日本料理 Japanese</option>
@@ -50,7 +65,7 @@
 
     {{! image }}
     <div class='form-group mt-3'>
-      <label for='image'>餐廳圖片 Image Link</label>
+      <label for='image'>餐廳圖片( 非必填 ) Image Link( option )</label>
       <input
         type='text'
         class='form-control'
@@ -59,6 +74,9 @@
         placeholder='圖片連結 Please put the image link here'
         value='{{list.image}}'
       />
+      <div class='invalid-feedback'>
+        Spaces are not allowed.
+      </div>
     </div>
 
     {{! phone }}
@@ -71,7 +89,11 @@
         id='phone'
         placeholder='請輸入電話號碼 Please text the restaurant phone number here'
         value='{{list.phone}}'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid phone number.
+      </div>
     </div>
 
     {{! location }}
@@ -84,12 +106,16 @@
         id='location'
         placeholder='請輸入餐廳地址 Please text the restaurant address here'
         value='{{list.location}}'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid location.
+      </div>
     </div>
 
     {{! google_map }}
     <div class='form-group mt-3'>
-      <label for='google_map'>連結 Google Map Link</label>
+      <label for='google_map'>連結( 非必填 ) Google Map Link( option )</label>
       <input
         type='text'
         class='form-control'
@@ -98,11 +124,14 @@
         placeholder='請貼上 Google Map 連結 Please put the Google Map link here'
         value='{{list.google_map}}'
       />
+      <div class='invalid-feedback'>
+        Spaces are not allowed.
+      </div>
     </div>
 
     {{! rating }}
     <div class='form-group mt-3'>
-      <label for='rating'>評分 Rate for the restaurant</label>
+      <label for='rating'>評分( 必填 ) Rate for the restaurant( required )</label>
       <input
         type='Number'
         class='form-control'
@@ -113,7 +142,11 @@
         max='5'
         step='0.1'
         value='{{list.rating}}'
+        required
       />
+      <div class='invalid-feedback'>
+        Valid rating is from 0 to 5.
+      </div>
     </div>
 
     {{! description }}
@@ -121,13 +154,19 @@
       <label for='description'>請描述這間餐廳( 必填 ) Write some description for
         the restaurant( required )</label>
       <input
+        type='text'
         class='form-control'
         id='description'
         name='description'
         placeholder='好吃!!!! Yummy'
         value='{{list.description}}'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid description.
+      </div>
     </div>
+
     <button
       id='submit-btn'
       type='submit'
@@ -136,3 +175,15 @@
     >Save</button>
   </form>
 </div>
+
+<script>
+  const form = document.querySelector('.needs-validation')
+
+  form.addEventListener('submit', event => {
+    if (!form.checkValidity()) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    form.classList.add('was-validated')
+  }, false)
+</script>

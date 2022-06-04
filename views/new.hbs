@@ -1,39 +1,55 @@
 <div class='container'>
-  <form action='/restaurants' method='POST'>
+  <form action='/restaurants' method='POST' class='needs-validation' novalidate>
+
     {{! name }}
     <div class='form-group mt-3'>
-      <label for='name'>餐廳名稱 ( 必填 )</label>
+      <label for='name' class='form-label'>餐廳名稱 ( 必填 )</label>
       <input
         type='text'
         class='form-control'
         name='name'
         id='name'
         placeholder='請輸入餐廳的中文名稱'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid name.
+      </div>
     </div>
+
     {{! name_en }}
     <div class='form-group mt-3'>
-      <label for='name_en'>Restaurant Name ( required )</label>
+      <label for='name_en' class='form-label'>Restaurant Name ( required )</label>
       <input
         type='text'
         class='form-control'
         name='name_en'
         id='name_en'
         placeholder='Please text the restaurant name here'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid name.
+      </div>
     </div>
 
     {{! category }}
     <div class='form-group mt-3'>
-      <label for='category'>類型( 必填 ) Cuisine Type( required )</label>
+      <label for='category' class='form-label'>類型( 必填 ) Cuisine Type(
+        required )</label>
       <input
-        list='categories'
         type='text'
         class='form-control'
         name='category'
         id='category'
         placeholder='請輸入餐點類型 What is the cuisine type of this restaurant?'
+        list='categories'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid category.
+      </div>
+
       <datalist id='categories'>
         <option>美式 American</option>
         <option>日本料理 Japanese</option>
@@ -47,7 +63,7 @@
 
     {{! image }}
     <div class='form-group mt-3'>
-      <label for='image'>餐廳圖片 Image Link</label>
+      <label for='image' class='form-label'>餐廳圖片( 非必填 ) Image Link( option )</label>
       <input
         type='text'
         class='form-control'
@@ -55,35 +71,47 @@
         id='image'
         placeholder='圖片連結 Please put the image link here'
       />
+      <div class='invalid-feedback'>
+        Spaces are not allowed.
+      </div>
     </div>
 
     {{! phone }}
     <div class='form-group mt-3'>
-      <label for='phone'>電話( 必填 ) Phone Number( required )</label>
+      <label for='phone' class='form-label'>電話( 必填 ) Phone Number( required
+        )</label>
       <input
         type='text'
         class='form-control'
         name='phone'
         id='phone'
         placeholder='請輸入電話號碼 Please text the restaurant phone number here'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid phone number.
+      </div>
     </div>
 
     {{! location }}
     <div class='form-group mt-3'>
-      <label for='loaction'>地址( 必填 ) Address( required )</label>
+      <label for='loaction' class='form-label'>地址( 必填 ) Address( required )</label>
       <input
         type='text'
         class='form-control'
         name='location'
         id='location'
         placeholder='請輸入餐廳地址 Please text the restaurant address here'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid location.
+      </div>
     </div>
 
     {{! google_map }}
     <div class='form-group mt-3'>
-      <label for='google_map'>連結 Google Map Link</label>
+      <label for='google_map' class='form-label'>連結( 非必填 ) Google Map Link( option )</label>
       <input
         type='text'
         class='form-control'
@@ -91,11 +119,14 @@
         id='google_map'
         placeholder='請貼上 Google Map 連結 Please put the Google Map link here'
       />
+      <div class='invalid-feedback'>
+        Spaces are not allowed.
+      </div>
     </div>
 
     {{! rating }}
     <div class='form-group mt-3'>
-      <label for='rating'>評分 Rate for the restaurant</label>
+      <label for='rating' class='form-label'>評分( 必填 ) Rate for the restaurant( required )</label>
       <input
         type='Number'
         class='form-control'
@@ -105,20 +136,30 @@
         min='0'
         max='5'
         step='0.1'
+        required
       />
+      <div class='invalid-feedback'>
+        Valid rating is from 0 to 5.
+      </div>
     </div>
 
     {{! description }}
     <div class='form-group mt-3'>
-      <label for='description'>請描述這間餐廳( 必填 ) Write some description for
-        the restaurant( required )</label>
+      <label for='description' class='form-label'>請描述這間餐廳( 必填 ) Write
+        some description for the restaurant( required )</label>
       <input
+        type='text'
         class='form-control'
         id='description'
         name='description'
         placeholder='好吃!!!! Yummy'
+        required
       />
+      <div class='invalid-feedback'>
+        Please provide a valid description.
+      </div>
     </div>
+
     <button
       id='submit-btn'
       type='submit'
@@ -127,3 +168,15 @@
     >Create</button>
   </form>
 </div>
+
+<script>
+  const form = document.querySelector('.needs-validation')
+
+  form.addEventListener('submit', event => {
+    if (!form.checkValidity()) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    form.classList.add('was-validated')
+  }, false)
+</script>

@@ -10,6 +10,7 @@ router.get('/new', (req, res) => {
 
 // route to get the list from create list page
 router.post('/', (req, res) => {
+
   return RestaurantList.create(req.body)
   .then(() => res.redirect('/'))
   .catch(error => console.log(error))

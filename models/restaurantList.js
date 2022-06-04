@@ -29,7 +29,8 @@ const restaurantSchema = new Schema({
     type: String,
   },
   rating: {
-    type: Number
+    type: Number,
+    required: true
   },
   description: {
     type: String,
