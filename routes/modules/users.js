@@ -42,8 +42,11 @@ router.post('/register', (req, res) => {
 })
 
 // router: GET/ users/ logout
+// invoke function logout(), which exposes from Passport.js, to clear the login session
 router.get('/logout', (req, res) => {
-
+  req.logout(() => {
+    res.redirect('/users/login')
+  })
 })
 
 
