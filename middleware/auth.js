@@ -4,6 +4,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next()
     }
+    req.flash('warning_msg', 'Please login or register an account!')
     res.redirect('/users/login')
   }
 }

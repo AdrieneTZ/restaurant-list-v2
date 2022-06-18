@@ -4,6 +4,7 @@ const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 
 // 引入路由器
 const routes = require('./routes')
@@ -44,6 +45,9 @@ app.use(methodOverride('_method'))
 // invoke function usePassport(), app is an argument from passport.js
 usePassport(app)
 
+// use connect-flash
+app.use(flash())
+
 // add middleware
 /**
  * app.use(): this middleware is used to every router
@@ -63,6 +67,10 @@ usePassport(app)
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+
   next()
 })
 
