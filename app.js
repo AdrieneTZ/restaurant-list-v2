@@ -18,7 +18,7 @@ require('./config/mongoose')
 
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT
 
 
 // 設定樣板引擎
@@ -28,7 +28,7 @@ app.set('views', './views')
 
 //
 app.use(session({
-  secret: 'TopSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
