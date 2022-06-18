@@ -1,4 +1,7 @@
-// 載入 passport & LocalStrategy modules
+// import bcrypt
+const bcrypt = require('bcryptjs')
+
+// import passport & LocalStrategy modules
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 
@@ -19,10 +22,16 @@ module.exports = app => {
           if (!user) {
             return done(null, false, { message: 'This email has not been registered!' })
           }
-          if (password !== user.password) {
-            return done(null, false, { message: 'Incorrect email or password!'})
-          }
-          return done(null, user)
+
+          // use bcrypt to compare password
+          // bcrypt.compare() returns a Boolean, passed to isMatch
+          return bcrypt.compare(password, user.password)
+            .then(isMatch => {
+              if (!isMatch) {
+                return done(null, false, { message: 'Incorrect email or password!'})
+              }
+              return done(null, user)
+            })
         })
         .catch(error => console.log(error))
     }

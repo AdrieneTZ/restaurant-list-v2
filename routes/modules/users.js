@@ -5,8 +5,9 @@ const router = express.Router()
 // import User model
 const User = require('../../models/user')
 
-// import passport
+// import passport and bcrypt
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 
 // router: GET/ users/ login
@@ -63,7 +64,17 @@ router.post('/register', (req, res) => {
           confirmPassword
         })
       }
-      return User.create({ name, email, password })
+
+      // hash password before saving
+      return bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(password, salt))
+        .then(hash => User.create({
+            name,
+            email,
+            password: hash
+          })
+        )
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
     })

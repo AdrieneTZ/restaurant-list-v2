@@ -13,8 +13,20 @@ router.get('/new', (req, res) => {
 // receive list data from new page
 router.post('/', (req, res) => {
   const userId = req.user._id
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
 
-  return RestaurantList.create(req.body, userId)
+  return RestaurantList.create({
+    name,
+    name_en,
+    category,
+    image,
+    location,
+    phone,
+    google_map,
+    rating,
+    description,
+    userId
+  })
   .then(() => res.redirect('/'))
   .catch(error => console.log(error))
 })
@@ -49,8 +61,8 @@ router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
 
-  return RestaurantList.findOneAndUpdate({ userId, _id }, req.body, { returnNewDocument: true })
-    .then(updateList => res.redirect(`/restaurants/${_id}`, { updateList }))
+  return RestaurantList.findOneAndUpdate({ userId, _id }, req.body)
+    .then(() => res.redirect(`/restaurants/${_id}`))
     .catch(error => console.log(error))
 })
 
