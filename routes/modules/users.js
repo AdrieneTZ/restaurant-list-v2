@@ -1,22 +1,32 @@
-// 引入 Express and Express router
+// import Express and Express router
 const express = require('express')
 const router = express.Router()
 
-// 引入 User model
+// import User model
 const User = require('../../models/user')
 
+// import passport
+const passport = require('passport')
+
+
+// router: GET/ users/ login
 router.get('/login', (req, res) => {
   return res.render('login')
 })
 
-router.post('/login', (req, res) => {
+// router: POST/ users/ login
+// use middleware passport.authenticate() to authenticate request state
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: 'users/login'
+}))
 
-})
-
+// router: GET/ users/ register
 router.get('/register', (req, res) => {
   return res.render('register')
 })
 
+// router: POST/ users/ register
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   User.findOne({ email })
@@ -31,6 +41,7 @@ router.post('/register', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// router: GET/ users/ logout
 router.get('/logout', (req, res) => {
 
 })
