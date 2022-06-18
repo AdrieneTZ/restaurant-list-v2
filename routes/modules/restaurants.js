@@ -3,54 +3,64 @@ const router = express.Router()
 
 const RestaurantList = require('../../models/restaurantList')
 
-// route to create list page
+// route: GET/ restaurants/ new
+// create list page
 router.get('/new', (req, res) => {
   return res.render('new')
 })
 
-// route to get the list from create list page
+// route: POST/ restaurants
+// receive list data from new page
 router.post('/', (req, res) => {
+  const userId = req.user._id
 
-  return RestaurantList.create(req.body)
+  return RestaurantList.create(req.body, userId)
   .then(() => res.redirect('/'))
   .catch(error => console.log(error))
 })
 
-// route to detail page
+// route: GET/ restaurants/ :id
+// to detail page of the restaurant list
 router.get('/:id', (req, res) => {
-  const id = req.params.id
-  return RestaurantList.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+
+  return RestaurantList.findOne({ userId, _id })
   .lean()
   .then(list => res.render('detail', { list }))
   .catch(error => console.log(error))
 })
 
-// router to edit page
+// router: GET/ restaurants/ :id/ edit
+// to edit page
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
 
-  return RestaurantList.findById(id)
+  return RestaurantList.findOne({ userId, _id })
   .lean()
   .then(list => res.render('edit', { list }))
   .catch(error => console.log(error))
 })
 
-// router to get the edited list and send it to the database
+// router: PUT/ restaurants/ :id
+// get the edited list and send it to the database
 router.put('/:id', (req, res) => {
-  const id = req.params.id
-  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
+  const userId = req.user._id
+  const _id = req.params.id
 
-  return RestaurantList.findByIdAndUpdate(id, req.body, { new: true })
-    .then(updateList => { return updateList.save() })
-    .then(() => res.redirect(`/restaurants/${id}`))
+  return RestaurantList.findOneAndUpdate({ userId, _id }, req.body, { returnNewDocument: true })
+    .then(updateList => res.redirect(`/restaurants/${_id}`, { updateList }))
     .catch(error => console.log(error))
 })
 
-// route to delete a list
+// route: DELETE/ restaurants/ :id
+// delete a list
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
 
-  return RestaurantList.findByIdAndRemove(id)
+  return RestaurantList.findOneAndRemove({ userId, _id })
   .then(() => res.redirect('/'))
   .catch(error => console.log(error))
 })
