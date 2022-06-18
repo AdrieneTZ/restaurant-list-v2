@@ -44,6 +44,28 @@ app.use(methodOverride('_method'))
 // invoke function usePassport(), app is an argument from passport.js
 usePassport(app)
 
+// add middleware
+/**
+ * app.use(): this middleware is used to every router
+ * req.isAuthenticated(): method from Passport.js, return Boolean
+ * this Bollean is stored in variable `isAuthenticated`
+ *
+ * res.locals: from Express.js, an object stores the authentication state and user data for view
+ * storing data in res.locals is a better way for the frequently used data
+ *
+ * req.user: from Passport.js library: "If authentication is successful, the user
+ * will be logged in and populated at `req.user` and a session will be
+ * established by default."
+ * this user object, getting from passport deserializing, is stored in variable `user`
+ *
+ * both `isAuthenticated` and `user` are stored in res.locals and can be used in view template
+ */
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
+
 // 將 request 導入路由器
 app.use(routes)
 

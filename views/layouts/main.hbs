@@ -27,10 +27,13 @@
               class='d-inline-block align-top'
               alt='My Restaurant List'
             />
-            My Restaurant List
+            {{#if isAuthenticated}}{{ user.name }}'s{{/if}} Restaurant List
           </a>
-          <a class='btn btn-outline-light' href='/restaurants/new'>Create a
-            favorite list</a>
+          {{#if isAuthenticated}}
+          <a class='btn btn-outline-light' href='/users/logout'>Logout</a>
+          {{else}}
+          <a class='btn btn-outline-light' href='/users/login'>Login</a>
+          {{/if}}
         </div>
       </nav>
       <div class='banner'></div>
