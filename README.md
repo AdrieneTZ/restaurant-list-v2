@@ -43,7 +43,7 @@
 #### Step 1. Clone this project and install all dependencies
 ```bash
 # Clone the project
-git clone https://github.com/AdrieneTZ/restaurant-list.git
+git clone https://github.com/AdrieneTZ/restaurant-list-v2.git
 
 # Go to the project file
 cd restaurant-list
