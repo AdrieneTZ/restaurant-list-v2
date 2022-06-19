@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "seed": "node models/seeds/restaurantListSeeder.js"
+    "seeduser": "node models/seeds/userSeeder.js",
+    "seedlist": "node models/seeds/restaurantSeeder.js"
   },
   "keywords": [],
   "author": "",

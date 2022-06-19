@@ -37,7 +37,7 @@ const restaurantSchema = new Schema({
     required: true
   },
   userId: {
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.Mixed,
     ref: 'User',
     index: true,
     required: true

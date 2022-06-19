@@ -15,6 +15,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  lists: [Number],
   createdAt: {
     type: Date,
     default: Date.now
